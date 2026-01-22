@@ -108,7 +108,7 @@ sudo apt install python3.10 python3.10-venv python3.10-distutils
 ```
 Verify:
 
-    python3.10 --version
+    py -3.10 --version
 
   
 
@@ -116,7 +116,7 @@ Verify:
 
 From the project root:
 
-    python -m venv venv
+    py -3.10 -m venv venv
 
 Activate it:
 
