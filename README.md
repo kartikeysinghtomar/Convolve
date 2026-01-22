@@ -84,10 +84,10 @@ Compatible version : Python 3.10
     3. Run the installer.
     4. IMPORTANT: Check **“Add Python to PATH”**.
     5. Complete installation.
+Verify:
 
-  Verify:
+    py -3.10 --version
 
-    python --version
 
 #### Install Python 3.10 on macOS
 
@@ -96,9 +96,7 @@ Using Homebrew (recommended):
 ```bash
 brew install python@3.10
 ```
-  Verify:
-    
-    python3.10 --version
+
 
 #### Install Python 3.10 on Linux (Ubuntu/Debian)
 
@@ -106,9 +104,6 @@ brew install python@3.10
 sudo apt update
 sudo apt install python3.10 python3.10-venv python3.10-distutils
 ```
-Verify:
-
-    py -3.10 --version
 
   
 
@@ -120,7 +115,9 @@ From the project root:
 
 Activate it:
 
-    Windows: venv\Scripts\activate
+    Windows: 
+    Terminal: venv\Scripts\activate
+    PowerShell: .\venv\Scripts\Activate.ps1
 
     Linux / macOS: source venv/bin/activate
 
@@ -128,6 +125,7 @@ Activate it:
 Bash
 
     pip install -r requirements.txt
+>Recommendation: If the installation fails, try installing torch separately first: pip install torch --index-url https://download.pytorch.org/whl/torch/
 
 Key libraries installed:   
 ```text
@@ -157,7 +155,7 @@ data/ingestion/
 **IMPORTANT:** Run the following once to generate embeddings and store them in Qdrant:
 Bash
 
-    python ingestion/ingest_schemes.py
+    python -m ingestion.ingest_schemes
 
 ## 6. PDF Ingestion 
 
@@ -167,7 +165,7 @@ data/ingestion/pdfs/
 ```
 Run the ingestion script:
     
-    python ingestion/ingest_pdfs.py
+    python -m ingestion.ingest_pdfs
 
 ## 7. OCR Setup
 
@@ -190,6 +188,17 @@ Install Tesseract OCR:
     Uses the system microphone and Whisper for transcription.
 
     Note: Whisper models download automatically on first use. If a microphone is unavailable, the system defaults to text input.
+
+System Dependencies
+
+Linux:
+
+    sudo apt install tesseract-ocr portaudio19-dev
+
+
+macOS:
+
+    brew install tesseract portaudio
 
 ## 9. Running the System
 
