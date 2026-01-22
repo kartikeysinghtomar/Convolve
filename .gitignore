@@ -1,0 +1,25 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+
+# Qdrant local storage
+qdrant_data/
+
+# OCR binaries (do NOT commit)
+Tesseract-OCR/
+
+# Temporary / generated files
+*.wav
+*.png
+*.jpg
+*.jpeg
+*.pdf
+
+# OS-specific
+.DS_Store
+Thumbs.db

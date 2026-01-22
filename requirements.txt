@@ -1,0 +1,12 @@
+sentence-transformers
+torch
+numpy
+pandas
+scipy
+openai-whisper
+sounddevice
+pytesseract
+Pillow
+PyMuPDF
+qdrant-client==1.5.4
+pydantic<2.0
