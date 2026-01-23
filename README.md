@@ -14,7 +14,7 @@ The system runs **entirely locally** using open-source tools and does **not depe
 * 🎙️ **Multimodal Support:** Input data via **Text, Voice, Images (OCR), or PDFs**.
 * 🔐 **Privacy First:** Runs **100% locally**. No external APIs, no data leaks.
 * 💬 **Smart Session Memory:** Remembers your eligibility details (income, age) throughout the chat.
-* ⚖️ **Explainable AI:** Don't just get a list; understand exactly *why* you qualify or were excluded.
+* ⚖️ **Explainable AI:** Don't just get a list of recommendations; understand exactly *why* you qualify or were excluded.
 
 ---
 
@@ -84,6 +84,11 @@ Compatible version : Python 3.10
     3. Run the installer.
     4. IMPORTANT: Check **“Add Python to PATH”**.
     5. Complete installation.
+>If you don't see an option to add Python to PATH:
+>Search "Edit the system environment variables"
+>
+>In "Advanced"->"Environment Variable"->"System Variables"->"PATH"->"(Add path to Python 3.10.xx folder)"
+
 Verify:
 
     py -3.10 --version
@@ -182,6 +187,11 @@ Install Tesseract OCR:
         macOS: brew install tesseract
 
     Note: Tesseract must be in your system PATH, not inside the project folder.
+>If you don't see an option to add Tesseract to PATH:
+>Search "Edit the system environment variables"
+>
+>In "Advanced"->"Environment Variable"->"System Variables"->"PATH"->"(Add path to Tesseract folder)"
+
 
 ## 8. Audio Input Setup
 
