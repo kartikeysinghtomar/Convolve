@@ -1,6 +1,5 @@
 # Convolve
-## Multimodal Government Scheme Discovery System
-
+## Intelligent Government Scheme Discovery System
 This is a **local, multimodal, explainable government scheme discovery system**.  
 It helps users discover relevant government schemes using **text, voice, images, and PDFs**, while transparently explaining *why* a scheme was shown or excluded.
 
