@@ -192,6 +192,11 @@ Install Tesseract OCR:
 >
 >In "Advanced"->"Environment Variable"->"System Variables"->"PATH"->"(Add path to Tesseract folder)"
 
+Verify:
+        
+        where tesseract
+
+This should return the PATH of tesseract outside your root repository
 
 ## 8. Audio Input Setup
 
@@ -214,7 +219,7 @@ macOS:
 
 Start the interactive demo:
 
-    py -3.10 test.py
+    python test.py
 
 >You can now enter text, use the microphone, upload documents, and ask for scheme recommendations.
 
