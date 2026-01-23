@@ -53,16 +53,12 @@ def cosine_similarity(a, b):
 # -----------------------------
 # SEMANTIC EXCLUSION
 # -----------------------------
-def exclusion_reason(
-    scheme_vec,
-    exclusion_texts,
-    exclusion_embeddings
-):
+def exclusion_reason(scheme_vec, exclusion_texts, exclusion_embeddings):
     """
     Returns the exclusion text that caused this scheme to be removed,
     or None if not excluded.
     """
-    if not exclusion_embeddings:
+    if exclusion_embeddings is None or len(exclusion_embeddings) == 0:
         return None
 
     for text, emb in zip(exclusion_texts, exclusion_embeddings):
@@ -119,28 +115,16 @@ def discover_schemes_for_session(session_id: str):
     # -----------------------------
     # SEARCH
     # -----------------------------
-    # 1. Build query text
-    query_text = f"{profile_text} {doc_context}".strip()
-
-    if not query_text:
-        print("\nNo profile or document context available.\n")
-        return
-
-    # 2. Embed query text
-    query_vector = model.encode(query_text).tolist()
-
-
     results = client.search(
-    collection_name=COLLECTION_NAME,
-    query_vector=query_vector,
-    query_filter=query_filter,
-    limit=TOP_K
-)
+        collection_name=COLLECTION_NAME,
+        query_vector=query_vector,
+        query_filter=query_filter,
+        limit=TOP_K
+    )
 
     if not results:
         print("\nNo schemes found.\n")
         return
-
 
     candidates = [r for r in results if r.score >= THRESHOLD]
 
@@ -148,10 +132,12 @@ def discover_schemes_for_session(session_id: str):
         print("\nNo relevant schemes found. Try adding more details.\n")
         return
 
-    exclusion_embeddings = (
-        model.encode(exclusion_texts)
-        if exclusion_texts else []
-    )
+    # -----------------------------
+    # EXCLUSION EMBEDDINGS (LIST)
+    # -----------------------------
+    exclusion_embeddings = [
+        model.encode(t) for t in exclusion_texts
+    ] if exclusion_texts else []
 
     final = []
 
@@ -160,7 +146,6 @@ def discover_schemes_for_session(session_id: str):
         name = payload.get("scheme_name", "Unknown Scheme")
 
         LAST_REASONS[name] = []
-
         LAST_REASONS[name].append(
             f"Semantic relevance score: {r.score:.2f}"
         )
