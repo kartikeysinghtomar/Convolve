@@ -261,3 +261,136 @@ To run the model at full capacity:
     [ ] Tesseract installed (for OCR)
 
     [ ] Microphone available (for Audio)
+
+
+## 🧭 How to Use the System (User Interaction Guide)
+
+Once the application starts, you will enter an **interactive command-line session**.  
+The system continuously builds an eligibility profile based on your inputs.
+
+---
+
+## ✍️ Input Options
+
+You can provide information in **multiple ways**:
+
+### 1. Text Input (Default)
+Type sentences describing yourself, for example:
+i am a farmer
+i earn less than 50000 annually
+i live in uttar pradesh
+i am not SC/ST
+
+
+The system automatically:
+- Adds **positive eligibility information**
+- asks if the salary mentioned is monthly or annual
+- Tracks **exclusions** (e.g., “not SC/ST”)
+- Maintains session memory across inputs
+
+---
+
+### 2. Audio Input
+You can provide spoken input using:
+
+audio <path-to-audio-file>
+
+or use push-to-talk mode:
+    
+    push
+    press enter to start recording 
+    press enter to stop recording
+
+
+Your speech is transcribed and treated exactly like text input.
+
+---
+
+### 3. Upload Documents 
+You may upload supporting documents:
+
+    upload pdf <path-to-pdf>
+    upload image <path-to-image>
+
+
+>If OCR is available, the text is extracted and used as **additional eligibility context**.
+>
+>If OCR is unavailable, the system continues to function normally.
+
+---
+
+## 🔍 Discovering Government Schemes
+
+After providing enough information, type **exactly**:
+
+    what schemes can benefit me?
+
+
+This command triggers:
+- Semantic search over government schemes
+- State-aware filtering
+- Automatic exclusion of inapplicable schemes
+- Ranking based on relevance to your profile
+
+---
+
+## 📋 Viewing Scheme Results
+
+You will see a numbered list of schemes.
+
+Example:
+
+1. Feed The Seed
+   Category: Agriculture,Rural & Environment
+   States: Telangana
+
+2. Integrated Horticulture Development
+   Category: Social welfare & Empowerment
+   States: Assam
+.
+.
+.
+
+
+---
+
+## 📑 Scheme Interaction Menu
+
+After selecting a scheme number, you can choose from:
+
+1. **Who is eligible?**  
+   → Shows eligibility criteria
+
+2. **What benefits are provided?**  
+   → Displays financial or service benefits
+
+3. **How to apply?**  
+   → Explains the application process
+
+4. **What documents are required?**  
+   → Lists required documents
+
+5. **Why was this scheme shown?**  
+   → Explains *why* the scheme matches your profile  
+   (semantic relevance, state match, exclusions considered)
+
+6. **Back to scheme list**
+
+---
+
+## Other Commands
+
+- Clear session memory🧹:
+
+        clear memory
+
+- Exit the application:
+
+        exit
+
+---
+
+## 🧠 Key Design Note
+
+The system does **not** rely on hardcoded rules for caste, gender, or income.
+All matching and exclusion is done using **semantic understanding** using vector database stored in **Qdrant**, making the system flexible, explainable, and robust.
